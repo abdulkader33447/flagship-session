@@ -16,8 +16,8 @@ const Home = () => {
 
     const searchedPhones = data.filter(
       (phone) =>
-        phone.name.toLowerCase().split(" ").includes(text.toLowerCase()) ||
-        phone.brand.toLowerCase().split(" ").includes(text.toLowerCase())
+        phone?.name?.toLowerCase().split(" ").includes(text.toLowerCase()) ||
+        phone?.brand?.toLowerCase().split(" ").includes(text.toLowerCase())
     );
     // console.log(text)
     // console.log(searchedPhones);
