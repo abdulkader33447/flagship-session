@@ -11,24 +11,24 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
-    errorElement:<ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path:'/',
-        element:<Home/>
+        path: "/",
+        element: <Home />,
+        loader: () => fetch("phones.json"),
       },
       {
         path: "/favorites",
         Component: Favorite,
-        
       },
       {
         path: "/about",
-        element: <About/>,
+        element: <About />,
       },
       {
         path: "/phone-details",
-        element: <PhoneDetails/>,
+        element: <PhoneDetails />,
       },
     ],
   },
