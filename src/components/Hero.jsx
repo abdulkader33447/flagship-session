@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import bannerImg from "../assets/banner.png";
 
-const Hero = () => {
+const Hero = ({ handleSearch }) => {
+  const [searchText, setSearchText] = useState("");
+  // console.log(searchText);
   return (
     <div className="py-12">
       <img
@@ -17,13 +19,25 @@ const Hero = () => {
           Best place to browse, search, view details and purchase of top
           flagship phones of the current time - FlagshipFaceOff
         </p>
-        <form className="flex flex-col md:flex-row items-center justify-center mb-4 md:px-24">
+        <form
+          onSubmit={(e) =>{
+            handleSearch(e, searchText)
+            // reset input state
+            setSearchText('')
+          }}
+          className="flex flex-col md:flex-row items-center justify-center mb-4 md:px-24"
+        >
           <input
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
             type="text"
             placeholder="Search Phone Name"
             className="bg-white border border-gray-300 rounded shadow-md h-12 w-2/3 px-3 mb-2 focus:outline-none focus:shadow-outline md:mr-2 md:mb-0"
           />
-          <button href="#_" className="cursor-pointer relative inline-block text-lg group">
+          <button
+            type="submit"
+            className="cursor-pointer relative inline-block text-lg group"
+          >
             <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
               <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
               <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
