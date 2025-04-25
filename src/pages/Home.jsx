@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Hero from "../components/Hero";
 import PhonesContainer from "../components/PhonesContainer";
 import { useLoaderData } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   // data receive from routes.jsx
@@ -25,6 +26,9 @@ const Home = () => {
   };
   return (
     <>
+    <Helmet>
+      <title>flagship | home</title>
+    </Helmet>
       <Hero handleSearch={handleSearch} />
       <PhonesContainer phones={phones} />
     </>

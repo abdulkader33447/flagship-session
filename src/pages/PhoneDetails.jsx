@@ -1,5 +1,7 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router";
+import Button from "../components/ui/Button";
 
 const PhoneDetails = () => {
   const data = useLoaderData();
@@ -14,24 +16,31 @@ const PhoneDetails = () => {
   const {
     name,
     image,
-    brand,
-    model,
-    price,
-    description,
-    storage,
-    camera_info,
+    // brand,
+    // model,
+    // price,
+    // description,
+    // storage,
+    // camera_info,
   } = singlePhone || {};
 
   return (
     <div className="w-full py-12 mx-auto">
+      <Helmet>
+        <title>flagship | {name}</title>
+      </Helmet>
       <img
-        className="w-full max-w-2/3 mx-auto rounded mb-7"
+        className="sm:w-full  mx-auto rounded mb-7"
         src={image}
         alt="banner image"
       />
       <div className="flex justify-between">
-        <h1 className="text-6xl font-thin mb-7">{name}</h1>
-        <button className="btn">btn</button>
+        <h1 className=" sm:text-6xl text-2xl font-thin mb-7">{name}</h1>
+        <div className="flex">
+          
+          <Button label="cart"/>
+          <Button label="favorite"/>
+        </div>
       </div>
     </div>
   );
