@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router";
 import Button from "../components/ui/Button";
 import { MdBookmarkAdd, MdShoppingCartCheckout } from "react-icons/md";
-import { addFavorite } from "../utils";
+import { addFavorite, addToCart, getCart } from "../utils";
+import { CartContext } from "../providers/Context";
 
 const PhoneDetails = () => {
+  const { setCart } = useContext(CartContext);
+
   const data = useLoaderData();
   // console.log(data)
 
@@ -26,9 +29,17 @@ const PhoneDetails = () => {
     // camera_info,
   } = singlePhone || {};
 
-  const handleFavorite = ()=>{
-    addFavorite(singlePhone)
-  }
+  const handleFavorite = () => {
+    addFavorite(singlePhone);
+  };
+
+  const handleCart = () => {
+    // save to local storage for persistency
+    addToCart(singlePhone);
+
+    // update state for instant ui
+    setCart(getCart());
+  };
 
   return (
     <div className="w-full py-12 mx-auto">
@@ -44,7 +55,10 @@ const PhoneDetails = () => {
       <div className="flex justify-between">
         <h1 className=" sm:text-6xl text-2xl font-thin mb-7">{name}</h1>
         <div className="flex gap-5">
-          <Button label={<MdShoppingCartCheckout />} />
+          <Button
+            onClick={handleCart}
+            label={<MdShoppingCartCheckout />}
+          />
           <Button onClick={handleFavorite} label={<MdBookmarkAdd />} />
         </div>
       </div>
