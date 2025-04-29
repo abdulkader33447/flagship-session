@@ -14,7 +14,7 @@ const Favorite = () => {
     <div className="py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-7">
         {displayPhones.map((phone) => (
-          <PhonesCard key={phone.id} phone={phone} />
+          <PhonesCard key={phone.id} phone={phone} deletable={true} />
         ))}
       </div>
     </div>
