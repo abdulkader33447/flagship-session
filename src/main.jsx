@@ -9,12 +9,12 @@ import { HelmetProvider } from "react-helmet-async";
 import CartProvider from "./providers/CartProvider.jsx";
 import { Toaster } from "react-hot-toast";
 
-createRoot(document.getElementById("root")).render( 
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
       <CartProvider>
         <RouterProvider router={router} />
-        <Toaster/>
+        <Toaster position="top-right"/>
       </CartProvider>
     </HelmetProvider>
   </StrictMode>
