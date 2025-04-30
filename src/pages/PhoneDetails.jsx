@@ -55,10 +55,7 @@ const PhoneDetails = () => {
       <div className="flex justify-between">
         <h1 className=" sm:text-6xl text-2xl font-thin mb-7">{name}</h1>
         <div className="flex gap-5">
-          <Button
-            onClick={handleCart}
-            label={<MdShoppingCartCheckout />}
-          />
+          <Button onClick={handleCart} label={<MdShoppingCartCheckout />} />
           <Button onClick={handleFavorite} label={<MdBookmarkAdd />} />
         </div>
       </div>
